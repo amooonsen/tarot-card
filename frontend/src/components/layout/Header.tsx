@@ -13,6 +13,7 @@ export default function Header() {
               <Link href='/chocie'>Choice.</Link>
               <Link href='/notice'>Notice.</Link>
               <Link href='/info'>Info.</Link>
+              <Link href='/prototype'>Prototype.</Link>
             </li>
           </ul>
         </nav>
