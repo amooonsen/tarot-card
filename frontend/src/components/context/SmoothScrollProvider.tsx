@@ -8,21 +8,24 @@ const SmoothScrollProvider: React.FC = (): React.ReactElement => {
   useEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth > 1024) {
       const lenis = new Lenis();
-
-      // 애니메이션 프레임을 요청하는 함수
-      function raf(time: number):void {
+  
+      // Declare raf as a function expression assigned to a variable
+      const raf = (time: number): void => {
         lenis.raf(time);
         requestAnimationFrame(raf);
-      }
-
+      };
+  
       requestAnimationFrame(raf);
-
-      return ():void => {
+  
+      return (): void => {
         lenis.destroy();
-        cancelAnimationFrame(requestAnimationFrame(raf));
+        // Cancel the last requested frame
+        const frameId = requestAnimationFrame(raf);
+        cancelAnimationFrame(frameId);
       };
     }
   }, []);
+  
 
   return <></>
 }
