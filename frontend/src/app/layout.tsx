@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import '../styles/globals.css'
+import '../styles/custom.scss'
 
 // components
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import SmoothScrollProvider from "@/components/context/SmoothScrollProvider";
-import StickyCurosr from "@/components/interactive/StickyCursor";
+import ClientProvider from "@/components/context/ClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,11 +23,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
         <div id="content" className="h-full">
-          <SmoothScrollProvider/>
-          <StickyCurosr/>
-          <Header />
-          {children}
-          <Footer />
+          <SmoothScrollProvider />
+          <ClientProvider>
+            {children}
+          </ClientProvider>
         </div>
       </body>
     </html>

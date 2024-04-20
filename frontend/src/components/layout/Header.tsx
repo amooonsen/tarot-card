@@ -1,32 +1,29 @@
-import Link from 'next/link'
-import React from 'react'
+import React, { forwardRef } from 'react';
+import Link from 'next/link';
 
-export default function Header() {
+// components
+import Magnetic from '../interactive/Magnetic';
+
+type Props = {}
+
+const Header = forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
-    <header className='flex justify-between items-center h-12 px-8'>
-      <Link href='/'>로고</Link>
-      {/* 전체메뉴(햄버거) */}
-      {/* <div className="">
-        <nav>
-          <ul>
-            <li>
-              <Link href='/chocie'>Choice.</Link>
-              <Link href='/notice'>Notice.</Link>
-              <Link href='/info'>Info.</Link>
-              <Link href='/prototype'>Prototype.</Link>
-            </li>
-          </ul>
-        </nav>
-      </div> */}
-        {/* <Magnetic> */}
-          <div className="relative flex flex-col gap-2 p-4 pointer-events-none">
-            <div className="absolute left-0 top-0 w-full h-full pointer-events-auto hover:scale-300"></div>
-            <div className="block w-8 h-[2px] mix-blend-difference bg-white"></div>
-            <div className="block w-8 h-[2px] mix-blend-difference bg-white"></div>
-            <div className="block w-8 h-[2px] mix-blend-difference bg-white"></div>
+    <header className='sticky top-0 left-0 z-10 flex justify-between items-center w-full h-16 pl-8 overflow-hidden'>
+      <Link href='/' className='text-white'>로고</Link>
+      {/* s: custom.scss */}
+      <div className='all-menu'>
+        <Magnetic>
+          <div className='burger'>
+            <div ref={ref} className='bounds'></div>
           </div>
-        {/* </Magnetic> */}
-
+        </Magnetic>
+      </div>
+      {/* e: custom.scss */}
     </header>
-  )
-}
+  );
+});
+
+// displayName 속성 설정
+Header.displayName = 'Header';
+
+export default Header;
