@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
-        <div id="content" className="h-full">
+        <div id="content" className="h-full pt-24">
           <SmoothScrollProvider />
           <ClientProvider>
             {children}

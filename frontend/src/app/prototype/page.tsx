@@ -16,7 +16,7 @@ import { TypographySmall } from '@/components/typography/TypographySmall'
 
 export default function page() {
   return (
-    <main role='main' className='p-6'>
+    <main role='main' className='p-6 text-white'>
       <TypographyH1>
         Taxing Laughter: The Joke Tax Chronicles
       </TypographyH1>
