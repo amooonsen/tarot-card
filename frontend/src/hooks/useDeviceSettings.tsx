@@ -1,22 +1,22 @@
-"use client"
-
 import { useState, useEffect } from 'react';
-import { debounce } from '@/utils/utils';
 
 function useDeviceSettings() {
-  const [isLargeEnough, setIsLargeEnough] = useState(window.innerWidth > 786);
+  const [isLargeEnough, setIsLargeEnough] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = debounce(() => {
+    // 클라이언트 측에서만 실행
+    const updateDeviceSettings = () => {
       setIsLargeEnough(window.innerWidth > 786);
       setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-    }, 300);
+    };
 
-    window.addEventListener('resize', handleResize);
-    handleResize();  // 초기 실행으로 현재 상태를 설정
+    updateDeviceSettings();
+    window.addEventListener('resize', updateDeviceSettings);
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', updateDeviceSettings);
+    };
   }, []);
 
   return { isLargeEnough, isMobile };

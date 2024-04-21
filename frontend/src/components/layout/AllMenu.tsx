@@ -1,43 +1,15 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Link from "next/link"
 import { useEffect } from "react"
-
-const mountAnim = { 'initial': 'initial', 'animate': 'enter', 'exit': 'exit' }
-
-const height = {
-  initial: {
-    height: 0
-  },
-  enter: (i: number) => ({
-    height: "100%",
-    transition: { duration: 0.5, delay: 0.05 * i, ease: [0.33, 1, 0.68, 1] }
-  }),
-  exit: (i: number) => ({
-    height: 0,
-    transition: { duration: 0.3, delay: 0.05 * i, ease: [0.33, 1, 0.68, 1] }
-  })
-}
-
-const background = {
-  initial: {
-    opacity: 0
-  },
-  enter: {
-    opacity: 0.5,
-    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] }
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] }
-  }
-}
+import { globalMenus, rotateX, mountAnim, slideLeft } from "@/constants/menus"
 
 type Props = {
   closeMenu: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function AllMenu({closeMenu}:Props) {
+export default function AllMenu({ closeMenu }: Props) {
   useEffect(() => {
     console.log(closeMenu)
     document.body.style.overflow = 'hidden'
@@ -47,29 +19,41 @@ export default function AllMenu({closeMenu}:Props) {
   }, [])
 
   return (
-    <div
-      data-lenis-prevent
-      className="fixed inset-0 z-[10] flex h-screen transition-all pointer-events-none">
-      {
-        [...Array(5)].map((_, index) => {
-          return (
-            <motion.div
-              key={index}
-              variants={height}
-              {...mountAnim}
-              custom={4 - index}
-              className='w-[20vw] h-full bg-[#673AB7]'
-            >
-            </motion.div>
-          )
-        })
-      }
-      {/* <motion.div
-        variants={background}
-        {...mountAnim}
-        className='w-full h-full absolute bg-white'>
-      </motion.div> */}
-
+    // custom.scss
+    <div className="all-menu">
+      <div
+        className="svg-wrapper"
+        onClick={() => closeMenu}>
+        <motion.svg
+          variants={slideLeft}
+          {...mountAnim}
+          width="68"
+          height="68"
+          viewBox="0 0 68 68"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.5 1.5L67 67" stroke="white" />
+          <path d="M66.5 1L0.999997 66.5" stroke="white" />
+        </motion.svg>
+      </div>
+      <div className="all-menu-contents">
+        {
+          globalMenus.map((el, index) => {
+            return (
+              <motion.div
+                onClick={() => closeMenu}
+                className="el"
+                key={index}
+                variants={rotateX}
+                {...mountAnim}
+                custom={index}
+              >
+                <Link href={el.title.toLowerCase()}>{el.title}</Link>
+              </motion.div>
+            )
+          })
+        }
+      </div>
     </div>
   )
 }
