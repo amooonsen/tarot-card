@@ -9,8 +9,8 @@ export default function Home() {
     <main className="flex flex-col items-center justify-between">
       <Intro/>
       <MainDescription/>
-      <MainParallex/>
-      <MainCardScroll/>
+      {/* <MainParallex/>
+      <MainCardScroll/> */}
     </main>
   );
 }

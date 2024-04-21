@@ -90,6 +90,7 @@ export default function StickyCursor({ stickyElement }: Props) {
 
   return (
     <motion.div
+      id='stickyCursor'
       transformTemplate={template}
       style={{
         left: smoothMouse.x,
