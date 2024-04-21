@@ -1,4 +1,4 @@
-.all-menu {
+.all-menu-wrap {
   position: relative;
   box-sizing: border-box;
   cursor: pointer;
@@ -11,7 +11,7 @@
     flex-direction: column;
     padding: 40px;
     pointer-events: none;
-
+ 
     &::before,
     &::after {
       display: block;

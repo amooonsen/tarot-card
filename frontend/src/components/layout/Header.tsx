@@ -1,24 +1,31 @@
-import React, { forwardRef } from 'react';
+import React, { useState, forwardRef } from 'react';
 import Link from 'next/link';
 
 // components
 import Magnetic from '../interactive/Magnetic';
+import AllMenu from './AllMenu';
 
 type Props = {}
 
 const Header = forwardRef<HTMLDivElement, Props>((props, ref) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const handleOpenMenu = (e: React.MouseEvent<HTMLButtonElement>) => setIsOpen(true)
+  const handleCloseMenu = (e: React.MouseEvent<HTMLButtonElement>) => setIsOpen(false)
   return (
     <header className='fixed top-0 left-0 z-10 flex justify-between items-center w-full h-24 pl-8 overflow-hidden'>
       <Link href='/' className='text-white'>로고</Link>
       {/* s: custom.scss */}
-      <div className='all-menu'>
+      <button className='all-menu-wrap' onClick={handleOpenMenu}>
         <Magnetic>
           <div className='burger'>
             <div ref={ref} className='bounds'></div>
           </div>
         </Magnetic>
-      </div>
+      </button>
       {/* e: custom.scss */}
+      {
+        isOpen && <AllMenu closeMenu={handleCloseMenu} />
+      }
     </header>
   );
 });
