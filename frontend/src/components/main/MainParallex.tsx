@@ -21,10 +21,10 @@ export default function Home() {
     offset: ['start end', 'end start']
   })
 
-  const parallexY01 = useTransform(scrollYProgress, [0, 1], [100, height * 2])
-  const parallexY02 = useTransform(scrollYProgress, [0, 1], [0, height * 0.73])
-  const parallexY03 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25])
-  const parallexY04 = useTransform(scrollYProgress, [0, 1], [0, height * 0.5])
+  const parallexY01 = useTransform(scrollYProgress, [0, 1], [10, height * 1.3])
+  const parallexY02 = useTransform(scrollYProgress, [0, 1], [10, height * 1.65])
+  const parallexY03 = useTransform(scrollYProgress, [0, 1], [0, height * 0.7])
+  const parallexY04 = useTransform(scrollYProgress, [0, 1], [20, height * 1.1])
 
   useEffect(() => {
     const resize = () => {

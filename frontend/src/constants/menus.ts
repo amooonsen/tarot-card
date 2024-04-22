@@ -37,7 +37,7 @@ export const background = {
   },
   exit: {
     opacity: 0,
-    transition: { duration: 0.5, ease: [0.33, 1, 0.68, 1] }
+    transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] }
   }
 }
 
