@@ -7,3 +7,9 @@ export type TypographyProps = {
 export type TypopgraphyBlockquote = {
   title: string;
 }
+
+export type CardInfo = {
+  id: number;
+  name: string;
+  srcName: string;
+}

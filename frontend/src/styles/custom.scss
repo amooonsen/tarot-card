@@ -1,5 +1,9 @@
 // 전체메뉴 관련
 
+::selection {
+  background-color:#673AB7;
+}
+
 .all-menu-trigger-btn {
   position: relative;
   box-sizing: border-box;
@@ -67,7 +71,7 @@
 
       &:hover {
         path {
-          stroke: #D3FD50;
+          stroke: #673AB7;
         }
       }
     }

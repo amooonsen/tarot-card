@@ -1,31 +1,31 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { height, mountAnim } from "@/constants/menus"
+import { height, mountAnim, background } from "@/constants/menus"
 export default function StairEffect() {
   return (
     <div
       data-lenis-prevent
       className="fixed inset-0 z-[10] flex h-screen transition-all pointer-events-none">
       {
-        [...Array(5)].map((_, index) => {
+        [...Array(8)].map((_, index) => {
           return (
             <motion.div
               key={index}
               variants={height}
               {...mountAnim}
-              custom={4 - index}
-              className='w-[20vw] h-full bg-[#673AB7]'
+              custom={7 - index}
+              className='w-[12.5vw] h-full bg-[#800020]'
             >
             </motion.div>
           )
         })
       }
-      {/* <motion.div
+      <motion.div
         variants={background}
         {...mountAnim}
-        className='w-full h-full absolute bg-white'>
-      </motion.div> */}
+        className='w-full h-full absolute bg-[#800020]'>
+      </motion.div>
 
     </div>
   )

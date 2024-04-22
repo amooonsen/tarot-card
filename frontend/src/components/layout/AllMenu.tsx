@@ -20,20 +20,26 @@ export default function AllMenu({ closeMenu }: Props) {
     }
   }, [])
 
-  const handleMenuClick = (url: string) => {
-    closeMenu();
-    setTimeout(() => {
-      router.push(url);
-    }, 500); 
-  };
-
   const resetHomePath = (title: string) => {
+    console.log(title)
     return title === 'Home' ? '/' : title.toLowerCase()
   }
 
+  const handleMenuClick = (title: string) => {
+    const url = resetHomePath(title);
+
+    closeMenu();
+
+    setTimeout(() => {
+      router.push(url);
+    }, 300)
+  };
+
   return (
     // custom.scss
-    <div className="all-menu">
+    <div 
+    data-lenis-prevent
+    className="all-menu">
       <div className="svg-wrapper">
         <motion.svg
           variants={slideLeft}
@@ -53,15 +59,16 @@ export default function AllMenu({ closeMenu }: Props) {
           globalMenus.map((el, index) => {
             return (
               <motion.div
-                onClick={() => handleMenuClick(el.title.toLowerCase())}
+                onClick={() => handleMenuClick(el.title)}
                 className="el"
                 key={index}
                 variants={rotateX}
                 {...mountAnim}
                 custom={index}
               >
-                <Link
-                  href={resetHomePath(el.title)}>{el.title}</Link>
+                <p>
+                  {el.title}
+                </p>
               </motion.div>
             )
           })
