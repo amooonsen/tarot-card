@@ -11,6 +11,9 @@ import { tarotCards } from '@/constants/tarots';
 // types
 import { CardInfo } from '@/types/TypeCommon';
 
+// assets
+import MainVisual from '../../../public/images/main_visual02.jpg'
+
 export default function Home() {
 
   const parallexContents = useRef(null)
@@ -60,7 +63,17 @@ export default function Home() {
           images={[tarotCards[14], tarotCards[2], tarotCards[2]]} />
         </div>
       </div>
-      <div className={styles.spacer}></div>
+      <div className={styles.spacer}>
+      <Image
+        className='object-cover grayscale scale-50'
+        src={MainVisual}
+        alt='main-background'
+        fill
+        aria-hidden
+        placeholder='blur'
+        loading="lazy"
+        />
+      </div>
     </section>
   )
 }
